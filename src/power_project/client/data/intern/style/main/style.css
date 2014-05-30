@@ -1,0 +1,22 @@
+/*--------------------------------------------------------------------------------
+© QQW 2013
+--------------------------------------------------------------------------------*/
+QPushButton#btnClose{
+	background-color: rgba(0, 0, 0,0);
+	image: url(data/intern/style/img/close_0.png);
+}
+QPushButton#btnClose:hover{
+	background-color: rgba(0, 0, 0,0);
+	image: url(data/intern/style/img/close_1.png);
+}
+/*--------------------------------------------------------------------------------*/
+QLabel#lblProjectName{
+	color : rgb(250, 250, 250);
+}
+QLabel#lblUserName{
+	color : rgb(200, 200, 200);
+}
+QLabel#lblNaviItemTitel{
+	color : rgb(200, 200, 200);
+}
+/*--------------------------------------------------------------------------------*/

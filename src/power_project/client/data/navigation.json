@@ -1,0 +1,41 @@
+{
+	"Navigation":
+	[
+		{
+            "titel": "Home",
+			"icon": "house.png",
+			"script": "home.lua",
+			"user": 0
+        },
+		{
+            "titel": "Bug",
+			"icon": "bug.png",
+			"script": "btg.lua",
+			"user": 0
+        },
+		{
+            "titel": "Calender",
+			"icon": "calendar.png",
+			"script": "calendar.lua",
+			"user": 0
+        },
+		{
+            "titel": "Live Chat",
+			"icon": "livechat.png",
+			"script": "home.lua",
+			"user": 0
+        },
+		{
+            "titel": "Task",
+			"icon": "task.png",
+			"script": "task.lua",
+			"user": 0
+        },
+		{
+            "titel": "SVN",
+			"icon": "svn.png",
+			"script": "home.lua",
+			"user": 0
+        }
+	]
+}
