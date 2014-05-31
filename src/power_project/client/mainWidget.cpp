@@ -23,7 +23,7 @@ void CMainWidget::loadUI()
 	m_btnClose = new QPushButton(this);
 	m_btnClose->setObjectName("btnClose");
 	m_btnClose->setParent(this);
-	m_btnClose->setGeometry(this->geometry().width() - 45, 20, 20, 20);
+	m_btnClose->setGeometry(this->geometry().width() - 38, 20, 16, 16);
 	m_btnClose->show();
 
 	//Load resize icon
@@ -145,7 +145,7 @@ void CMainWidget::mouseReleaseEvent(QMouseEvent* event)
 //----------------------------------------------------------------------//
 void CMainWidget::resizeEvent(QResizeEvent* event)
 {
-	m_btnClose->setGeometry(this->geometry().width() - 45, 20, 20, 20);
+	m_btnClose->setGeometry(this->geometry().width() - 38, 20, 16, 16);
 	this->repaint();
 	QWidget::resizeEvent(event);
 

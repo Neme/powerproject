@@ -4,7 +4,7 @@
 #pragma once
 
 #include <boost\property_tree\json_parser.hpp>
-
+#define PPCONFIG(x,y) QQW::CConfig::get().getValue<x>(y)
 #define CONFIG_FILE_NAME "data/config.json"
 
 namespace QQW

@@ -1,18 +1,21 @@
 #include "stdafx.h"
 #include "server.h"
+#include <QSqlQuery>
 #include "../utility/config.h"
 //----------------------------------------------------------------------//
 CServer::CServer() 
 :m_port{0}
 {
-	m_port = QQW::CConfig::get().getValue<int>("Network.Port");
+	m_port = PPCONFIG(int, "Network.Port");
+	
+	// Database
+	m_database = new CDatabase(this);
 }
 //----------------------------------------------------------------------//
 CServer::~CServer()
 {
-	//for (auto itr : m_clients)
-		//delete *(*itr->second);
 	m_clients.clear();
+	delete m_database;
 
 }
 //----------------------------------------------------------------------//
@@ -23,12 +26,14 @@ void CServer::startServer()
 		std::cout << "Server has been started" << std::endl;
 	}
 	else{ ERROR_LOG("Can't listen to port: " + m_port); }
+
+
 }
 //----------------------------------------------------------------------//
 void CServer::incomingConnection(qintptr description)
 {
 	//Create new client
-	CClient* client = new CClient();
+	std::shared_ptr<CClient> client(new CClient());
 	client->setSocket(description);
 
 	// search for free id

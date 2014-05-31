@@ -20,6 +20,12 @@ CClient::CClient(QObject* parent /*= nullptr*/, const std::string& ip, int port)
 	// Error handling
 	connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)),
 		this, SLOT(error(QAbstractSocket::SocketError)));
+
+	// Set ioDevice
+	m_socketSteam.setDevice(m_socket);
+	m_socketSteam.setVersion(QDataStream::Qt_5_2);
+	m_socketSteam.setByteOrder(QDataStream::LittleEndian);
+
 }
 //----------------------------------------------------------------------//
 CClient::~CClient()
@@ -39,17 +45,19 @@ void CClient::disconnected()
 //----------------------------------------------------------------------//
 void CClient::readyRead()
 {
-	std::unique_ptr<QByteArray> data(new QByteArray);
+	// Clear old data in m_socket
+	m_socket->flush();
 
-	QDataStream inStream(m_socket);
-	inStream.setVersion(QDataStream::Qt_5_2);
+	// Get header see: EHEADERTYPES
+	quint16 headerType;
+	m_socketSteam >> headerType;
 
-	quint16 header;
-	inStream >> header;
-
-	emit(header);
-
-	*data = m_socket->readAll();
+	switch (headerType)
+	{
+	case EHEADERTYPES::SC_LOGIN_FAILED: emit receiveLogin(EHEADERTYPES::SC_LOGIN_FAILED); break;
+	case EHEADERTYPES::SC_LOGIN_SUCCESS: emit receiveLogin(EHEADERTYPES::SC_LOGIN_SUCCESS); break;
+	default:break;
+	}
 }
 //----------------------------------------------------------------------//
 // from: http://qt-project.org/doc/qt-4.8/qabstractsocket.html#SocketError-enum
@@ -100,13 +108,4 @@ void CClient::error(QAbstractSocket::SocketError error)
 	}
 }
 //---------------------------------------------------------------------//
-void CClient::send(qint16 type, const std::string& data)
-{
-	QDataStream outStream(m_socket);
-	outStream.setVersion(QDataStream::Version::Qt_5_2);
-	outStream.setByteOrder(QDataStream::LittleEndian);
 
-	outStream << type;
-	outStream << QString::fromStdString(data);
-	
-}

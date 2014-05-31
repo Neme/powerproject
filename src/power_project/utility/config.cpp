@@ -61,4 +61,6 @@ template int CConfig::getValue<int>(const std::string& key);
 template std::string CConfig::getValue<std::string>(const std::string& key);
 template float CConfig::getValue<float>(const std::string& key);
 template bool CConfig::getValue<bool>(const std::string& key);
+
+
 //---------------------------------------------------------------------------//

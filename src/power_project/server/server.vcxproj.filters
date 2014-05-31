@@ -28,6 +28,9 @@
     <Filter Include="Source Files\client">
       <UniqueIdentifier>{2c73b67d-dd49-4271-8e23-567a22320059}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\database">
+      <UniqueIdentifier>{d2d27410-5803-4c75-9f88-6bf7e3be5aa2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +51,15 @@
     <ClCompile Include="client.cpp">
       <Filter>Source Files\client</Filter>
     </ClCompile>
+    <ClCompile Include="database.cpp">
+      <Filter>Source Files\database</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_database.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_database.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -60,6 +72,9 @@
   <ItemGroup>
     <CustomBuild Include="client.h">
       <Filter>Source Files\client</Filter>
+    </CustomBuild>
+    <CustomBuild Include="database.h">
+      <Filter>Source Files\database</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

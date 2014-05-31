@@ -1,2 +1,3 @@
-2014/5/30 12:51:31||LOG START 
-2014/5/30 12:51:31||client.cpp >> 61||The connection was refused by the peer (or timed out).
+2014/5/31 15:25:30||LOG START 
+2014/5/31 15:25:30||client.cpp >> 69||The connection was refused by the peer (or timed out).
+2014/5/31 15:25:31||client.cpp >> 69||The connection was refused by the peer (or timed out).

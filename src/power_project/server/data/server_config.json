@@ -2,5 +2,10 @@
 	"Network":
 	{
 		"Port" : 21525
+	},
+	"Database":
+	{
+		"Type" : "QSQLITE",
+		"Location" : "data/database/ppdb.db"
 	}
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <qtcpserver.h>
 #include "client.h"
+#include "database.h"
 
 #define MAX_USER_COUT 1000
 
@@ -13,9 +14,12 @@ public:
 
 private:
 	int m_port;
-	std::map<int /*ID*/, CClient* /*Pointer to client*/> m_clients;
-
 	void incomingConnection(qintptr description) override;
+
+	std::map<int /*ID*/, std::shared_ptr<CClient> /*Pointer to client*/> m_clients;
+
+	// Database
+	CDatabase *m_database;
 
 public slots:
 	void clientDisconnected();

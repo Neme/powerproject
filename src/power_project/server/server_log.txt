@@ -1,2 +1,2 @@
-2014/5/30 12:48:23||LOG START 
-2014/5/30 12:48:23||server.cpp >> 25||
+2014/5/31 12:37:53||LOG START 
+2014/5/31 12:37:53||r:\source\proj\powerproject\src\power_project\utility\config.cpp >> 34||data/server_config.json(10): expected object name

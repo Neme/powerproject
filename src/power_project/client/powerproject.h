@@ -17,4 +17,7 @@ private:
 	Ui::CPowerProjectClass m_ui;
 	CDesigner m_designer;
 	CClient* m_client;
+
+public slots:
+	void start();
 };

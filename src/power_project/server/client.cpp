@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Client.h"
+#include <QSqlQuery>
 
 //----------------------------------------------------------------------//
 CClient::CClient(QObject* parent)
@@ -24,6 +25,10 @@ void CClient::setSocket(int sockDesc)
 	QObject::connect(m_socket, SIGNAL(disconnected()), this, SLOT(disconnected()));
 	QObject::connect(m_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 
+	m_socketSteam.setDevice(m_socket);
+	m_socketSteam.setByteOrder(QDataStream::LittleEndian);
+	m_socketSteam.setVersion(QDataStream::Version::Qt_5_2);
+
 	qDebug() << "CClient " << sockDesc << " tries to connected";
 }
 //----------------------------------------------------------------------//
@@ -40,25 +45,46 @@ void CClient::disconnected()
 void CClient::readyRead()
 {
 	// Get data from CClient
-	QDataStream inSteam(m_socket);
-	inSteam.setByteOrder(QDataStream::LittleEndian);
 	qint16 header;
-	inSteam >> header;
-	
-	QString loginName = "";
-	inSteam >> loginName;
+	m_socketSteam >> header;
 
-
-	std::cout << "Test " << header << " " << loginName.toStdString() << std::endl;
-
-	if (loginName == "rudi")
+	switch (header)
 	{
-		m_socket->write("1DONE");
-
+	case EHEADERTYPES::CS_LOGIN: clientLogin(); break;
+	default:break;
 	}
-	// Process data
 
-	// Send something back
-	//m_socket->write("Your message: "+ *data);
+}
+//---------------------------------------------------------------------//
+void CClient::clientLogin()
+{
+	qint16 senderHeader = 0;
+	QString loginName = "";
+	QString password = "";
+
+	m_socketSteam >> loginName;
+	m_socketSteam >> password;
+
+	std::string s = loginName.toStdString();
+	std::string ss = password.toStdString();
+
+	QSqlQuery query;
+	query.prepare("SELECT id FROM main.account WHERE name = :name AND password = :password");
+	query.bindValue(":name", loginName);
+	query.bindValue(":password", password);
+	query.exec();
+
+	if (query.next()/*Query = OK = login successful*/)
+	{
+		senderHeader = EHEADERTYPES::SC_LOGIN_SUCCESS;
+		m_socket->flush();
+		m_socketSteam << senderHeader;
+	}
+	else //  login NOT successful*/
+	{
+		senderHeader = EHEADERTYPES::SC_LOGIN_FAILED;
+		m_socket->flush();
+		m_socketSteam << senderHeader;
+	}
 
 }

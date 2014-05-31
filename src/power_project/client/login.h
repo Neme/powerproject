@@ -22,4 +22,8 @@ private:
 
 private slots:
 	void loginClicked();
+	void login(int isOK);
+
+signals:
+	void loginSuccess();
 };

@@ -20,7 +20,7 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CClient_t {
-    QByteArrayData data[9];
+    QByteArrayData data[8];
     char stringdata[91];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
@@ -31,16 +31,15 @@ struct qt_meta_stringdata_CClient_t {
 static const qt_meta_stringdata_CClient_t qt_meta_stringdata_CClient = {
     {
 QT_MOC_LITERAL(0, 0, 7),
-QT_MOC_LITERAL(1, 8, 7),
-QT_MOC_LITERAL(2, 16, 0),
-QT_MOC_LITERAL(3, 17, 4),
-QT_MOC_LITERAL(4, 22, 9),
-QT_MOC_LITERAL(5, 32, 12),
-QT_MOC_LITERAL(6, 45, 9),
-QT_MOC_LITERAL(7, 55, 5),
-QT_MOC_LITERAL(8, 61, 28)
+QT_MOC_LITERAL(1, 8, 12),
+QT_MOC_LITERAL(2, 21, 0),
+QT_MOC_LITERAL(3, 22, 9),
+QT_MOC_LITERAL(4, 32, 12),
+QT_MOC_LITERAL(5, 45, 9),
+QT_MOC_LITERAL(6, 55, 5),
+QT_MOC_LITERAL(7, 61, 28)
     },
-    "CClient\0receive\0\0type\0connected\0"
+    "CClient\0receiveLogin\0\0connected\0"
     "disconnected\0readyRead\0error\0"
     "QAbstractSocket::SocketError\0"
 };
@@ -63,19 +62,19 @@ static const uint qt_meta_data_CClient[] = {
        1,    1,   39,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   42,    2, 0x08,
-       5,    0,   43,    2, 0x08,
-       6,    0,   44,    2, 0x08,
-       7,    1,   45,    2, 0x08,
+       3,    0,   42,    2, 0x08,
+       4,    0,   43,    2, 0x08,
+       5,    0,   44,    2, 0x08,
+       6,    1,   45,    2, 0x08,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    2,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 8,    7,
+    QMetaType::Void, 0x80000000 | 7,    6,
 
        0        // eod
 };
@@ -85,7 +84,7 @@ void CClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
     if (_c == QMetaObject::InvokeMetaMethod) {
         CClient *_t = static_cast<CClient *>(_o);
         switch (_id) {
-        case 0: _t->receive((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 0: _t->receiveLogin((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->connected(); break;
         case 2: _t->disconnected(); break;
         case 3: _t->readyRead(); break;
@@ -108,7 +107,7 @@ void CClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (CClient::*_t)(int );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CClient::receive)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CClient::receiveLogin)) {
                 *result = 0;
             }
         }
@@ -152,7 +151,7 @@ int CClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void CClient::receive(int _t1)
+void CClient::receiveLogin(int _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
