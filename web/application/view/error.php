@@ -1,0 +1,6 @@
+<div class="panel panel-danger">
+    <div class="panel-heading">Error</div>
+    <div class="panel-body">
+        <?php echo 404 ?>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{
+	"name": "power_project",
+    "type": "application",
+    "description": "Project management web application",
+    "authors": [
+        {
+            "name": "Nemme",
+        }
+    ],
+	
+	"require": {
+        "php": ">=5.3.0",
+        "pimple/pimple": "1.0.*",
+        "twig/twig": "1.*",
+    },
+}
